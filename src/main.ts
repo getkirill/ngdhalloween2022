@@ -8,7 +8,7 @@ import { NGDHalloween2022Game } from "./game";
   () => {
     document.querySelector("#start-button")?.classList.add("hidden");
     document
-      .querySelector(".wrapper:has(#mount-point)")
+      .querySelector(".wrapper")
       ?.classList.remove("hidden");
     new NGDHalloween2022Game(
       document.querySelector("#mount-point") as HTMLCanvasElement
