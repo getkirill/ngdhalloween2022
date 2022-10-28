@@ -1,20 +1,24 @@
-import { Game, GameObjects } from "phaser";
+import { Game } from "phaser";
+import { Events } from "phaser";
 
-const supportsWebGL = (() => { 
+const supportsWebGL = (() => {
   try {
-   var canvas = document.createElement('canvas'); 
-   return !!window.WebGLRenderingContext &&
-     (canvas.getContext('webgl') || canvas.getContext('experimental-webgl'));
-  } catch(e) {
+    var canvas = document.createElement("canvas");
+    return (
+      !!window.WebGLRenderingContext &&
+      (canvas.getContext("webgl") || canvas.getContext("experimental-webgl"))
+    );
+  } catch (e) {
     return false;
   }
 })();
 
 export class NGDHalloween2022Game {
   private game: Game;
-  private gameObjects: {
-    [key: string]: GameObjects.GameObject;
-  } = {};
+  // private entities: {
+  //   [key: string]: Entity;
+  // } = {};
+  // publi
   constructor(public mount: HTMLCanvasElement) {
     const self = this;
     this.game = new Game({
@@ -43,18 +47,12 @@ export class NGDHalloween2022Game {
    * Initialize (create in phaser)
    */
   private init(scene: Phaser.Scene) {
-    this.gameObjects.graphics = scene.add.graphics();
+    
   }
   /**
    * Update
    */
   private update(scene: Phaser.Scene) {
-    (this.gameObjects.graphics as GameObjects.Graphics).fillStyle(0x00eeff, 1);
-    (this.gameObjects.graphics as GameObjects.Graphics).fillRect(
-      0,
-      0,
-      scene.game.config.width as number,
-      scene.game.config.height as number
-    );
+
   }
 }
