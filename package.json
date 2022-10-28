@@ -10,12 +10,19 @@
     "serve": "static-server -op 8080 dist"
   },
   "devDependencies": {
+    "@types/react": "^18.0.24",
+    "@types/react-dom": "^18.0.8",
+    "@vitejs/plugin-react": "^2.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "static-server": "^2.2.1",
     "typescript": "^4.6.4",
     "vite": "^3.2.0"
   },
   "dependencies": {
     "phaser": "^3.55.2",
+    "react-router": "^6.4.2",
+    "react-router-dom": "^6.4.2",
     "sass": "^1.55.0"
   }
 }
