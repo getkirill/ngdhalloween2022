@@ -1,5 +1,12 @@
 button.button {
 	background: none;
-	
-	
+	border: none;
+	color: var(--color);
+	font-size: 2em;
+	padding: .5rem 2rem;
+	border-radius: 10px;
+
+	&.accent {
+		background-color: var(--accent-color);
+	}
 }
