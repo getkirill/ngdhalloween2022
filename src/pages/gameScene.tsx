@@ -1,9 +1,8 @@
 import { useEffect } from 'react';
 import { availableUpgrades, upgradeCost, gameData, stat, usePumpkins, useUnlockUpgrade, availableBuildings, useUnlockBuilding, buildingCost, useSave } from '../gameData'
-import { translate, useLanguage } from '../localisation'
+import { translate } from '../localisation'
 import '../styles/gameScene.scss'
 export default function GameScene() {
-  const [reactLanguage, setLanguage] = useLanguage();
   const [pumpkins, incrementPumpkins, setPumpkins, reloadPumpkins] = usePumpkins();
   const save = useSave();
   useEffect(() => {

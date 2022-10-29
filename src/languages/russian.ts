@@ -2,7 +2,7 @@ import { Language } from "../localisation"
 
 const russian: Language = {
   "language.english": "Английский",
-  "language.russian": "Русский",
+  "language.russian": "🇷🇺 Русский",
   "language.unlocalised": "Без локализации (дебаг)",
   'game.name': 'ТыквоКликер', // no need for that i guess
   "game.author": "Авторы:",

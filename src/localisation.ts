@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import english from "./languages/english";
 import russian from "./languages/russian";
 import unlocalised from "./languages/unlocalised";

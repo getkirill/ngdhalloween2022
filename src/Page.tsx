@@ -1,6 +1,6 @@
-import MainMenu from "./components/mainMenu";
+import MainMenu from "./pages/mainMenu";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import GameScene from "./components/gameScene";
+import GameScene from "./pages/gameScene";
 export default function Page() {
   let routes = [
     { path: "/", component: <MainMenu />, id: 0 },
