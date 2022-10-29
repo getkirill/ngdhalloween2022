@@ -27,7 +27,13 @@ const english: Language = {
       )
     ))(),
   "game.upgrade.jack-o-lantern": "Jack-o-Lantern",
+  "game.ubgrade.noupgrades": "Couldn't upgrade anything.",
   "game.building.factory": "Pumpkin Factory",
+  "game.building.bank": "Pumpkin Bank",
+  "game.building.farmer": "Pumpkin Farmer",
+  "game.building.farm": "Pumpkin Farm",
+  "game.building.space-exploration": "Pumpkin Space Exploration",
+  "game.building.nobuildings": "There's no buildings to buy.",
   "game.stat.cursor-speed": "Cursor Speed",
   "game.stat.passive-income": "Passive Invome (per sec)",
 };
