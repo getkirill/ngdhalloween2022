@@ -1,8 +1,9 @@
-import languages, { changeLanguage, language, translate, useLanguage } from "../localisation";
-import Button from "./UI/button";
+import languages, { translate, useLanguage } from "../localisation";
+import Button from "../components/UI/button";
 import '../styles/mainMenu.scss'
 import { useNavigate } from "react-router-dom";
-import { ChangeEventHandler, EventHandler, ReactEventHandler, useEffect } from "react";
+import { ChangeEventHandler } from "react";
+import Select from "../components/UI/select";
 
 export default function MainMenu() {
   const [reactLanguage, setLanguage] = useLanguage();
@@ -12,9 +13,10 @@ export default function MainMenu() {
   let navigate = useNavigate()
   return (
     <>
-      <select value={reactLanguage} className="locale-select" onChange={onSelectLanguage}>
+      <Select className="locale-select" value={reactLanguage} onChange={onSelectLanguage} options={Object.entries(languages).map(([name, _]) => ({value: name, content: (reactLanguage != name ? `${translate(`language.${name}`, name)} - ` : '') + translate(`language.${name}`)}))}/>
+      {/* <select value={reactLanguage} className="locale-select" onChange={onSelectLanguage}>
         {Object.entries(languages).map(([name, _]) => name).map(_language => <option value={_language}>{reactLanguage != _language && `${translate(`language.${_language}`, _language)} - `}{translate(`language.${_language}`)}</option>)}
-      </select>
+      </select> */}
       <div className="main-menu">
         <div className="interface">
           <h1>

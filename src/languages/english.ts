@@ -5,7 +5,7 @@ const english: Language = {
     "We use one single cookie to set your language. We had to say this because laws laws. By continuing playing or using this website/game, you accept our use of this one single cookie. 🍪",
   "legal.localstorage":
     "We also use your broswer local storage to save progress.",
-  "language.english": "English",
+  "language.english": "🇺🇸 English",
   "language.russian": "Russian",
   "language.unlocalised": "Unlocalised (debug)",
   "game.name": "PumpkinClicker",

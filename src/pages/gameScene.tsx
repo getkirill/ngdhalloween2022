@@ -1,9 +1,16 @@
 import { useEffect } from 'react';
-import { availableUpgrades, upgradeCost, gameData, stat, usePumpkins, useUnlockUpgrade, availableBuildings, useUnlockBuilding, buildingCost, useSave } from '../gameData'
-import { translate, useLanguage } from '../localisation'
+import { availableBuildings, availableUpgrades } from '../gameData/availables';
+import usePumpkins from '../gameData/usePumkins';
+import stat from '../gameData/stat';
+import gameData from '../gameData/gameData';
+import useSave from "../gameData/useSave"
+import { useUnlockBuilding, useUnlockUpgrade } from '../gameData/unlocks';
+import { upgradeCost, buildingCost } from '../gameData/costs';
+
+import { translate } from '../localisation'
 import '../styles/gameScene.scss'
+
 export default function GameScene() {
-  const [reactLanguage, setLanguage] = useLanguage();
   const [pumpkins, incrementPumpkins, setPumpkins, reloadPumpkins] = usePumpkins();
   const save = useSave();
   useEffect(() => {
@@ -29,13 +36,13 @@ export default function GameScene() {
         <div className='buildings'>
           <h2>{translate('game.heading.buildings')}</h2>
           <div>
-            {availableBuildings().map(([name, building]) => <div className='building' onClick={unlockBuildingFor(name)}><span>{translate(`game.building.${name}`)} ({gameData.buildings[name] ? gameData.buildings[name].amount : 0})</span><span>{buildingCost(gameData.buildings[name] || building)}🎃</span></div>)}
+            {availableBuildings().map(([name, building]: any[]) => <div className='building' onClick={unlockBuildingFor(name)}><span>{translate(`game.building.${name}`)} ({gameData.buildings[name] ? gameData.buildings[name].amount : 0})</span><span>{buildingCost(gameData.buildings[name] || building)}🎃</span></div>)}
           </div>
         </div>
         <div className='upgrades'>
           <h2>{translate('game.heading.upgrades')}</h2>
           <div>
-            {availableUpgrades().map(([name, upgrade]) => <div className='upgrade' onClick={unlockUpgradeFor(name)}><span>{translate(`game.upgrade.${name}`)}{upgrade.infiniteUpgrade && ` (${gameData.unlockedUpgrades[name] ? gameData.unlockedUpgrades[name].level : 0})`}</span><span>{upgradeCost(gameData.unlockedUpgrades[name] || upgrade)}🎃</span></div>)}
+            {availableUpgrades().map(([name, upgrade]: any[]) => <div className='upgrade' onClick={unlockUpgradeFor(name)}><span>{translate(`game.upgrade.${name}`)}{upgrade.infiniteUpgrade && ` (${gameData.unlockedUpgrades[name] ? gameData.unlockedUpgrades[name].level : 0})`}</span><span>{upgradeCost(gameData.unlockedUpgrades[name] || upgrade)}🎃</span></div>)}
           </div>
         </div>
         <div className='stats'>
