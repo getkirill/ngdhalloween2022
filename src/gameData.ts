@@ -1,6 +1,6 @@
 // Module to export all data stuff
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 /**
  * Stat modifier
@@ -72,7 +72,11 @@ export const stats: { [key: string]: Stat } = {
   "cursor-speed": {
     multiplierType: "additive",
     initial: 1,
-  }, // Mouse click amount
+  },
+  "passive-income": {
+    multiplierType: "additive",
+    initial: 0,
+  },
 };
 
 /** To localise upgrade names, use game.upgrade.[key] key */
@@ -82,7 +86,7 @@ export const upgrades: { [key: string]: Upgrade } = {
     modifiers: [
       {
         stat: "cursor-speed",
-        multiplier: +0.5,
+        multiplier: +0.1,
       },
     ],
     cost: 10,
@@ -91,7 +95,7 @@ export const upgrades: { [key: string]: Upgrade } = {
     modifiers: [
       {
         stat: "cursor-speed",
-        multiplier: +0.5,
+        multiplier: +0.1,
       },
     ],
     dependsOn: ["spook-season-1"],
@@ -101,7 +105,7 @@ export const upgrades: { [key: string]: Upgrade } = {
     modifiers: [
       {
         stat: "cursor-speed",
-        multiplier: +0.5,
+        multiplier: +0.1,
       },
     ],
     dependsOn: ["spook-season-2"],
@@ -111,7 +115,7 @@ export const upgrades: { [key: string]: Upgrade } = {
     modifiers: [
       {
         stat: "cursor-speed",
-        multiplier: +0.5,
+        multiplier: +0.1,
       },
     ],
     dependsOn: ["spook-season-3"],
@@ -121,7 +125,7 @@ export const upgrades: { [key: string]: Upgrade } = {
     modifiers: [
       {
         stat: "cursor-speed",
-        multiplier: +0.5,
+        multiplier: +0.1,
       },
     ],
     dependsOn: ["spook-season-4"],
@@ -133,14 +137,14 @@ export const upgrades: { [key: string]: Upgrade } = {
     modifiers: [
       {
         stat: "cursor-speed",
-        bias: +1,
+        bias: +0.1,
       },
       {
         stat: "meta.upgrade-cost",
-        multiplier: 1.5,
+        multiplier: 2,
       },
     ],
-    cost: 10,
+    cost: 30,
   },
   /* ...(() => {
     return Object.fromEntries(
@@ -151,7 +155,7 @@ export const upgrades: { [key: string]: Upgrade } = {
             modifiers: [
               {
                 stat: "cursor-speed",
-                multiplier: +0.5,
+                multiplier: +0.1,
               },
             ],
             cost: 0,
@@ -163,12 +167,64 @@ export const upgrades: { [key: string]: Upgrade } = {
 };
 
 const buildings: { [key: string]: Building } = {
+  farmer: {
+    cost: 10,
+    modifiers: [
+      {
+        stat: "passive-income",
+        bias: 0.1,
+      },
+      {
+        stat: "meta.upgrade-cost",
+        multiplier: 1.5,
+      },
+    ],
+  },
+  farm: {
+    cost: 10,
+    modifiers: [
+      {
+        stat: "passive-income",
+        bias: 0.1,
+      },
+      {
+        stat: "meta.upgrade-cost",
+        multiplier: 1.5,
+      },
+    ],
+  },
   factory: {
     cost: 10,
     modifiers: [
       {
         stat: "passive-income",
-        bias: 1,
+        bias: 0.1,
+      },
+      {
+        stat: "meta.upgrade-cost",
+        multiplier: 1.5,
+      },
+    ],
+  },
+  bank: {
+    cost: 10,
+    modifiers: [
+      {
+        stat: "passive-income",
+        bias: 0.1,
+      },
+      {
+        stat: "meta.upgrade-cost",
+        multiplier: 1.5,
+      },
+    ],
+  },
+  "space-exploration": {
+    cost: 10,
+    modifiers: [
+      {
+        stat: "passive-income",
+        bias: 0.1,
       },
       {
         stat: "meta.upgrade-cost",
@@ -178,8 +234,8 @@ const buildings: { [key: string]: Building } = {
   },
 };
 
-export const gameData: {
-  pumpkins: 0;
+export let gameData: {
+  pumpkins: number;
   unlockedUpgrades: { [key: string]: UnlockedUpgrade };
   buildings: { [key: string]: BoughtBuilding };
 } = (window.localStorage.getItem("save-data") != null
@@ -190,13 +246,22 @@ export const gameData: {
   buildings: {},
 };
 
-export function usePumpkins(): [number, () => void, () => void] {
+export function usePumpkins(): [
+  number,
+  () => void,
+  (n: number) => void,
+  () => void
+] {
   const [pumpkins, setPumpkins] = useState<number>(gameData.pumpkins);
   return [
     pumpkins,
     () => {
       gameData.pumpkins += stat("cursor-speed");
       setPumpkins(gameData.pumpkins);
+    },
+    (n: number) => {
+      gameData.pumpkins = n;
+      setPumpkins(n);
     },
     () => {
       setPumpkins(gameData.pumpkins);
@@ -219,7 +284,7 @@ export function stat(statName: string): number {
       for (const modifier of unlockedUpgrade.modifiers) {
         if (modifier.bias) {
           biases[modifier.stat] =
-            (biases[modifier.stat] || stats[statName].initial) +
+            (biases[modifier.stat] || 0) +
             (unlockedUpgrade.infiniteUpgrade
               ? modifier.bias * (unlockedUpgrade.level as number)
               : modifier.bias);
@@ -237,38 +302,36 @@ export function stat(statName: string): number {
                   : modifier.multiplier);
       }
     }
-    return (
-      (biases[statName] || stats[statName].initial) *
-      (multipliers[statName] || 1)
-    );
+    return [biases[statName] || 0, multipliers[statName] || 1];
   })();
   const buildingStat = (() => {
     const biases: { [key: string]: number } = {};
     const multipliers: { [key: string]: number } = {};
-    for (const unlockedUpgrade of Object.entries(gameData.buildings).map(
+    for (const building of Object.entries(gameData.buildings).map(
       ([_, upgrade]) => upgrade
     )) {
-      for (const modifier of unlockedUpgrade.modifiers) {
+      for (const modifier of building.modifiers) {
         if (modifier.bias) {
           biases[modifier.stat] =
-            (biases[modifier.stat] || stats[statName].initial) +
-            modifier.bias * (unlockedUpgrade.amount as number);
+            (biases[modifier.stat] || 0) +
+            modifier.bias * ((building.amount as number) || 0);
         }
         if (modifier.multiplier)
           multipliers[modifier.stat] =
             stats[statName].multiplierType == "multiplicative"
               ? (multipliers[modifier.stat] || 1) *
-                (modifier.multiplier * (unlockedUpgrade.amount as number))
+                (modifier.multiplier * ((building.amount as number) || 0))
               : (multipliers[modifier.stat] || 1) +
-                modifier.multiplier * (unlockedUpgrade.amount as number);
+                modifier.multiplier * ((building.amount as number) || 0);
       }
     }
-    return (
-      (biases[statName] || stats[statName].initial) *
-      (multipliers[statName] || 1)
-    );
+    return [biases[statName] || 0, multipliers[statName] || 1];
   })();
-  return upgradeStat + buildingStat;
+  return (
+    (stats[statName].initial + upgradeStat[0] + buildingStat[0]) *
+    upgradeStat[1] *
+    buildingStat[1]
+  );
 }
 
 export function availableUpgrades() {
@@ -313,9 +376,9 @@ export function unlockUpgrade(name: string) {
     upgradeCost(gameData.unlockedUpgrades[name] || upgradeData)
   )
     throw new Error("Cannot unlock " + name);
-    gameData.pumpkins -= upgradeCost(
-      gameData.unlockedUpgrades[name] || upgradeData
-    );
+  gameData.pumpkins -= upgradeCost(
+    gameData.unlockedUpgrades[name] || upgradeData
+  );
   if (upgradeData.infiniteUpgrade) {
     if (gameData.unlockedUpgrades[name]) {
       gameData.unlockedUpgrades[name] = {
@@ -387,4 +450,15 @@ export function buildingCost(building: BoughtBuilding) {
     ].multiplier || 1) *
       ((building.amount || 0) + 1))
   );
+}
+
+export function useSave() {
+  useEffect(() => {
+    const i = setInterval(() => {
+      window.localStorage.setItem("save-data", JSON.stringify(gameData));
+    }, 1000 * 60);
+    return () => clearInterval(i);
+  });
+  return () =>
+    window.localStorage.setItem("save-data", JSON.stringify(gameData));
 }

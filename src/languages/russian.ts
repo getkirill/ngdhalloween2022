@@ -23,8 +23,9 @@ const russian: Language = {
       )
     ))(),
   "game.upgrade.jack-o-lantern": "Светящийся Джек",
-  "game.building.factory": "Фабрика Тыкв",
+  "game.building.factory": "Фабрика тыкв",
   "game.stat.cursor-speed": "Скорость курсора",
+  "game.stat.passive-income": "Пассивный доход (сек.)",
 }
 
 export default russian

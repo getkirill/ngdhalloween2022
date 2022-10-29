@@ -29,6 +29,7 @@ const english: Language = {
   "game.upgrade.jack-o-lantern": "Jack-o-Lantern",
   "game.building.factory": "Pumpkin Factory",
   "game.stat.cursor-speed": "Cursor Speed",
+  "game.stat.passive-income": "Passive Invome (per sec)",
 };
 
 export default english;

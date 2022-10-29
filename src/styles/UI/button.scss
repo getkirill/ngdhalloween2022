@@ -1,14 +1,19 @@
 button.button {
   --twemoji-size: 0.75em;
-	background: none;
-	border: none;
-	color: var(--color);
-	font-size: 2em;
-	padding: .5rem 2rem;
-	border-radius: 10px;
+  background: none;
+  border: none;
+  color: var(--color);
+  font-size: 2em;
+  padding: 0.5rem 2rem;
+  border-radius: 10px;
   cursor: pointer;
 
-	&.accent {
-		background-color: var(--accent-color);
-	}
+  &.accent {
+    background-color: var(--accent-color);
+  }
+  &.small {
+    font-size: 1em;
+    padding: 0.25rem 1rem;
+    border-radius: 5px;
+  }
 }
