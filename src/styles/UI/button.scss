@@ -1,10 +1,12 @@
 button.button {
+  --twemoji-size: 0.75em;
 	background: none;
 	border: none;
 	color: var(--color);
 	font-size: 2em;
 	padding: .5rem 2rem;
 	border-radius: 10px;
+  cursor: pointer;
 
 	&.accent {
 		background-color: var(--accent-color);

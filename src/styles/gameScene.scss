@@ -1,0 +1,106 @@
+:root,
+html,
+body,
+#root,
+#root > div {
+  height: 100%;
+  width: 100%;
+}
+
+.game-scene {
+  display: grid;
+  grid-template-columns: 1fr 28rem;
+  grid-template-rows: 1fr;
+  grid-template-areas: "main upgrades";
+  min-height: 0;
+  height: 100%;
+  width: 100%;
+  padding: 1rem;
+  gap: 1rem;
+  & * {
+    margin: 0;
+    padding: 0;
+  }
+  & > * {
+    border-radius: 0.5rem;
+    background-color: #444;
+    padding: 1rem;
+    height: 100%;
+  }
+  & > .main {
+    grid-area: main;
+    & .pumpkin-counter {
+      --twemoji-size: 0.75em;
+      text-align: center;
+      font-size: xx-large;
+    }
+    & > .wrapper {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      & > .george {
+        width: 100%;
+        max-width: 512px;
+      }
+    }
+  }
+  & > .upgrades {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: 1fr;
+    grid-template-areas: "buildings" "upgrades" "stats";
+    grid-area: upgrades;
+    gap: 1rem;
+    min-height: 0;
+    & > * {
+      min-height: 0;
+      display: grid;
+      grid-template-rows: auto 1fr;
+    }
+    & > .upgrades {
+      & > div {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+        overflow-y: auto;
+        flex-direction: column;
+        min-height: 0;
+        & > .upgrade {
+          display: flex;
+          justify-content: space-between;
+          cursor: pointer;
+          transition: 0.25s background-color;
+          padding: 1rem;
+          border-radius: 1rem;
+          background-color: #333;
+          &:hover {
+            background-color: #22ee22;
+          }
+        }
+      }
+    }
+    & > .buildings {
+      & > div {
+        display: flex;
+        gap: 1rem;
+        margin-top: 1rem;
+        overflow-y: auto;
+        flex-direction: column;
+        min-height: 0;
+        & > .upgrade {
+          display: flex;
+          justify-content: space-between;
+          cursor: pointer;
+          transition: 0.25s background-color;
+          padding: 1rem;
+          border-radius: 1rem;
+          background-color: #333;
+          &:hover {
+            background-color: #22ee22;
+          }
+        }
+      }
+    }
+  }
+}
