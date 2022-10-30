@@ -34,6 +34,7 @@ const english: Language = {
   "game.building.farmer": "Pumpkin Farmer",
   "game.building.farm": "Pumpkin Farm",
   "game.building.space-exploration": "Pumpkin Space Exploration",
+  "game.building.multiverse": "Pumpkin multiverse",
   "game.building.nobuildings": "There's no buildings to buy.",
   "game.stat.cursor-speed": "Cursor Speed",
   "game.stat.passive-income": "Passive Invome (per sec)",
