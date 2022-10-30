@@ -7,10 +7,12 @@ import useSave from "../gameData/useSave"
 import { useUnlockBuilding, useUnlockUpgrade } from '../gameData/unlocks';
 import { upgradeCost, buildingCost } from '../gameData/costs';
 // import { buildings, upgrades } from '../gameData/sourceData';
+import Achievement from '../components/achievement';
 
 import { translate, useLanguage } from '../localisation'
 import '../styles/gameScene.scss'
 import Button from '../components/UI/button';
+import { useAchievement } from '../gameData/achievements';
 
 export default function GameScene() {
   useLanguage(); // Load language if we are not from main menu
@@ -31,11 +33,12 @@ export default function GameScene() {
     e.currentTarget.classList.add("press")
     incrementPumpkins()
     setTimeout((e: HTMLImageElement) => e.classList.remove("press"), 50, e.currentTarget)
+    useAchievement("test")()
   }
-  console.log(gameData)
-
+  console.log(Achievement)
   return (
     <div className='game-scene'>
+      <Achievement id="test" />
       {/* Main  window */}
       <div className="main">
         <p className='pumpkin-counter'>{translate('game.pumpkins')}: {pumpkins.toFixed(0)} 🎃</p>
@@ -79,7 +82,7 @@ export default function GameScene() {
                 (
                   availableBuildings().map(([name, building]: any[]) =>
                     <div className='building' onClick={unlockBuildingFor(name)} key={name}>
-                      <span>{translate(`game.building.${name}`)} ({gameData.buildings[name] ? gameData.buildings[name].amount : 0})</span>
+                      <span>{translate(`game.building.${name}`)}</span> {/* ({gameData.buildings[name] ? gameData.buildings[name].amount : 0})*/}
                       <span>{buildingCost(gameData.buildings[name] || building)}🎃</span>
                     </div>)
                 )
@@ -95,7 +98,7 @@ export default function GameScene() {
                 (
                   availableUpgrades().map(([name, upgrade]: any[]) =>
                     <div className='upgrade' onClick={unlockUpgradeFor(name)} key={name}>
-                      <span>{translate(`game.upgrade.${name}`)}{upgrade.infiniteUpgrade && ` (${gameData.unlockedUpgrades[name] ? gameData.unlockedUpgrades[name].level : 0})`}</span>
+                      <span>{translate(`game.upgrade.${name}`)}</span> {/**{upgrade.infiniteUpgrade && ` (${gameData.unlockedUpgrades[name] ? gameData.unlockedUpgrades[name].level : 0})`} */}
                       <span>{upgradeCost(gameData.unlockedUpgrades[name] || upgrade)}🎃</span>
                     </div>)
                 )

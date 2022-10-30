@@ -14,7 +14,7 @@ if (!import_electron.app.requestSingleInstanceLock()) {
 }
 let win = null;
 const url = process.env.VITE_DEV_SERVER_URL || "";
-const indexHtml = (0, import_path.join)(process.env.DIST, "index.html");
+const indexHtml = process.cwd() + "/dist/index.html";
 async function createWindow() {
   win = new import_electron.BrowserWindow({
     title: "Main window",
