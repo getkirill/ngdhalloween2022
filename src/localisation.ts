@@ -36,6 +36,7 @@ export function useLanguage(): [
         name: "language",
         value: language,
         maxAge: 60 * 60 * 24 * 30,
+        path: "./"
       });
     },
   ];
