@@ -2,7 +2,8 @@
   "name": "ngdhalloween2022",
   "private": true,
   "version": "0.0.0",
-  "type": "module",
+  "type": "commonjs",
+  "main": "dist-electron/electron/main.js",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -13,6 +14,7 @@
     "@types/react": "^18.0.24",
     "@types/react-dom": "^18.0.8",
     "@vitejs/plugin-react": "^2.2.0",
+    "electron-react-devtools": "^0.5.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "static-server": "^2.2.1",
@@ -22,9 +24,11 @@
   "dependencies": {
     "@types/react-router-dom": "^5.3.3",
     "cookies-utils": "^1.0.0",
+    "electron": "^21.2.0",
     "react-router": "^6.4.2",
     "react-router-dom": "^6.4.2",
     "sass": "^1.55.0",
-    "twemoji-colr-font": "^14.0.2"
+    "twemoji-colr-font": "^14.0.2",
+    "vite-electron-plugin": "^0.4.7"
   }
 }

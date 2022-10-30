@@ -1,0 +1,24 @@
+div.achievement {
+	position: absolute;
+	z-index: 100;
+	right: 2rem;
+	top: 2rem;
+	height: 4em;
+	min-width: 20em;
+	bottom: auto;
+	padding: .5em;
+	background-color: var(--background-secondary-color);
+	border-radius: 10px;
+	border: 2px solid var(--accent-color);
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	&>div.icon {
+		size: 4em;
+	}
+	&>div.text {
+		display: flex;
+		
+	}
+}
