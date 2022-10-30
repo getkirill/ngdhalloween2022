@@ -32,12 +32,14 @@ const russian: Language = {
   "legal.localstorage":
     "Мы также используем локальное хранилище (localStorage) для сохранении прогресса в игре.",
   "game.upgrade.noupgrades": "Нет доступных улучшений.",
+  "game.upgrade.nothingupgraded": "Ничего не улучшено.",
   "game.building.bank": "Тыквенный банк",
   "game.building.farmer": "Фермер тыкв",
   "game.building.farm": "Ферма тыкв",
   "game.building.space-exploration": "Центр исследования космоса за тыквами",
   "game.building.multiverse": "Тыквенная Мультивселенная",
   "game.building.nobuildings": "Нет доступных построек.",
+  "game.building.nothingbuilt": "Ничего не построено.",
   "game.save": "Сохранить игру",
   "small-screen": "Ваш экран менее 612 пикселей.",
 };

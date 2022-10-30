@@ -32,12 +32,14 @@ const ukranian: Language = {
   "legal.localstorage":
     "Ми також використовуємо локальне сховище (localStorage) для збереження прогресу у грі.",
   "game.upgrade.noupgrades": "Немає доступних покращень.",
+  "game.upgrade.nothingupgraded": "Нічого не покращено.",
   "game.building.bank": "Гарбузовий банк",
   "game.building.farmer": "Фермер гарбузів",
   "game.building.farm": "Ферма гарбузів",
   "game.building.space-exploration": "Центр дослідження космосу за гарбузами",
   "game.building.multiverse": "Гарбузовий Мультивсесвіт ",
   "game.building.nobuildings": "Немає доступних споруд.",
+  "game.building.nothingbuilt": "Нічого не збудовано.",
   "game.save": "Зберегти гру",
   "small-screen": "Ваш екран менше 612 пікселів.",
 };

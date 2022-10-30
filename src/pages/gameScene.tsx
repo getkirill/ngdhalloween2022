@@ -41,23 +41,25 @@ export default function GameScene() {
         <p className='pumpkin-counter'>{translate('game.pumpkins')}: {pumpkins.toFixed(0)} 🎃</p>
         <div className="decorations">
           <h3>{translate("game.heading.buildings")}: </h3>
-          {Object.entries(gameData.buildings) //.filter(([name, _]: any[]) => gameData.buildings[name]?.amount != 0)
+          {((array: any[]) => array.length == 0 ? translate("game.building.nothingbuilt") :
+            array//.filter(([name, _]: any[]) => gameData.buildings[name]?.amount != 0)
             .sort()
             .map(([name, _]: any[]) => <span key={name}>
               <span className="accent">
                 {translate(`game.building.${name}`)}
               </span>
               {": " + gameData.buildings[name].amount}
-            </span>)}
+            </span>))(Object.entries(gameData.buildings))}
           <h3>{translate("game.heading.upgrades")}: </h3>
-          {Object.entries(gameData.unlockedUpgrades) //.filter(([name, _]: any[]) => gameData.unlockedUpgrades[name]?x.unlocked)
+          {( (array: any[]) => array.length == 0 ? translate("game.upgrade.nothingupgraded") : 
+            array//.filter(([name, _]: any[]) => gameData.unlockedUpgrades[name]?x.unlocked)
             .sort()
             .map(([name, _]: any) => <span key={name}>
               <span className="accent">
                 {translate(`game.upgrade.${name}`)}
               </span>
               {((count?: number) => count ? ': ' + count : '')(gameData.unlockedUpgrades[name].level)}
-            </span>)}
+            </span>))(Object.entries(gameData.unlockedUpgrades))}
         </div>
         <div className="wrapper">
           <img className='george' id="george" src="resources/george.png" alt="George, pumpkin you need to click." onClick={onGeorgeClick} />
