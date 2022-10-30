@@ -5,6 +5,7 @@ import { createRoot } from "react-dom/client";
 import { languageCheck, translate } from "./localisation";
 
 console.log(import.meta.env.MODE)
+console.log(import.meta.env.BASE_URL)
 import.meta.env.DEV && languageCheck()
 
 createRoot(document.querySelector("#root") as Element).render(

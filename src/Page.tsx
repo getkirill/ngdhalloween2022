@@ -13,7 +13,7 @@ export default function Page() {
   }[];
   return (
     <>
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
           {routes.map((r) => (
             <Route path={r.path} element={r.component} key={''+r.id} />
