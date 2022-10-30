@@ -55,7 +55,7 @@ export default function GameScene() {
               ((array) => array.length == 0 ? <span>{translate("game.building.nobuildings")}</span> : array)
                 (
                   availableBuildings().map(([name, building]: any[]) =>
-                    <div className='building' onClick={unlockBuildingFor(name)}>
+                    <div className='building' onClick={unlockBuildingFor(name)} key={name}>
                       <span>{translate(`game.building.${name}`)} ({gameData.buildings[name] ? gameData.buildings[name].amount : 0})</span>
                       <span>{buildingCost(gameData.buildings[name] || building)}🎃</span>
                     </div>)
@@ -71,7 +71,7 @@ export default function GameScene() {
               ((array) => array.length == 0 ? <span>{translate("game.upgrade.noupgrades")}</span> : array)
                 (
                   availableUpgrades().map(([name, upgrade]: any[]) =>
-                    <div className='upgrade' onClick={unlockUpgradeFor(name)}>
+                    <div className='upgrade' onClick={unlockUpgradeFor(name)} key={name}>
                       <span>{translate(`game.upgrade.${name}`)}{upgrade.infiniteUpgrade && ` (${gameData.unlockedUpgrades[name] ? gameData.unlockedUpgrades[name].level : 0})`}</span>
                       <span>{upgradeCost(gameData.unlockedUpgrades[name] || upgrade)}🎃</span>
                     </div>)
