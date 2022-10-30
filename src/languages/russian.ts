@@ -19,7 +19,7 @@ const russian: Language = {
       new Map(
         [1, 2, 3, 4, 5].map((x) => [
           `game.upgrade.spook-season-${x}`,
-          `Месяц Хеллуина: ${x}`,
+          `${x} месяц Хеллуина`,
         ])
       )
     ))(),
@@ -36,7 +36,7 @@ const russian: Language = {
   "game.building.farmer": "Фермер тыкв",
   "game.building.farm": "Ферма тыкв",
   "game.building.space-exploration": "Центр исследования космоса за тыквами",
-  "game.building.multiverse": "Тыквенная мултивселенная",
+  "game.building.multiverse": "Тыквенная Мультивселенная",
   "game.building.nobuildings": "Нет доступных построек.",
   "game.save": "Сохранить игру",
   "small-screen": "Ваш экран менее 612 пикселей.",

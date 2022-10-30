@@ -36,6 +36,7 @@ const ukranian: Language = {
   "game.building.farmer": "Фермер гарбузів",
   "game.building.farm": "Ферма гарбузів",
   "game.building.space-exploration": "Центр дослідження космосу за гарбузами",
+  "game.building.multiverse": "Гарбузовий Мультивсесвіт ",
   "game.building.nobuildings": "Немає доступних споруд.",
   "game.save": "Зберегти гру",
   "small-screen": "Ваш екран менше 612 пікселів.",

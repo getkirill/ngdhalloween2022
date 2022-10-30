@@ -6,6 +6,7 @@ import gameData from '../gameData/gameData';
 import useSave from "../gameData/useSave"
 import { useUnlockBuilding, useUnlockUpgrade } from '../gameData/unlocks';
 import { upgradeCost, buildingCost } from '../gameData/costs';
+// import { buildings, upgrades } from '../gameData/sourceData';
 
 import { translate, useLanguage } from '../localisation'
 import '../styles/gameScene.scss'
@@ -26,19 +27,39 @@ export default function GameScene() {
   const unlockBuilding = useUnlockBuilding()
   const unlockBuildingFor = (name: string) => () => { unlockBuilding(name); reloadPumpkins() }
 
-  const onGeorgeClick: MouseEventHandler<HTMLImageElement> =  (e) => {
+  const onGeorgeClick: MouseEventHandler<HTMLImageElement> = (e) => {
     e.currentTarget.classList.add("press")
     incrementPumpkins()
     setTimeout((e: HTMLImageElement) => e.classList.remove("press"), 50, e.currentTarget)
   }
+  console.log(gameData)
 
   return (
     <div className='game-scene'>
       {/* Main  window */}
       <div className="main">
         <p className='pumpkin-counter'>{translate('game.pumpkins')}: {pumpkins.toFixed(0)} 🎃</p>
+        <div className="decorations">
+          <h3>{translate("game.heading.buildings")}: </h3>
+          {Object.entries(gameData.buildings) //.filter(([name, _]: any[]) => gameData.buildings[name]?.amount != 0)
+            .sort()
+            .map(([name, _]: any[]) => <span key={name}>
+              <span className="accent">
+                {translate(`game.building.${name}`)}
+              </span>
+              {": " + gameData.buildings[name].amount}
+            </span>)}
+          <h3>{translate("game.heading.upgrades")}: </h3>
+          {Object.entries(gameData.unlockedUpgrades) //.filter(([name, _]: any[]) => gameData.unlockedUpgrades[name]?x.unlocked)
+            .sort()
+            .map(([name, _]: any) => <span key={name}>
+              <span className="accent">
+                {translate(`game.upgrade.${name}`)}
+              </span>
+              {((count?: number) => count ? ': ' + count : '')(gameData.unlockedUpgrades[name].level)}
+            </span>)}
+        </div>
         <div className="wrapper">
-          <div className="decorations">123</div>
           <img className='george' id="george" src="resources/george.png" alt="George, pumpkin you need to click." onClick={onGeorgeClick} />
         </div>
         <Button type='accent' size='small' onClick={save}>{translate('game.save')}</Button>
