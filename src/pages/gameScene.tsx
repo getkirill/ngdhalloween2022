@@ -7,11 +7,12 @@ import useSave from "../gameData/useSave"
 import { useUnlockBuilding, useUnlockUpgrade } from '../gameData/unlocks';
 import { upgradeCost, buildingCost } from '../gameData/costs';
 
-import { translate } from '../localisation'
+import { translate, useLanguage } from '../localisation'
 import '../styles/gameScene.scss'
 import Button from '../components/UI/button';
 
 export default function GameScene() {
+  useLanguage(); // Load language if we are not from main menu
   const [pumpkins, incrementPumpkins, setPumpkins, reloadPumpkins] = usePumpkins();
   const save = useSave();
   useEffect(() => {
@@ -40,7 +41,7 @@ export default function GameScene() {
           <div className="decorations">123</div>
           <img className='george' id="george" src="resources/george.png" alt="George, pumpkin you need to click." onClick={onGeorgeClick} />
         </div>
-        <Button type='accent' size='small' onClick={save}>Save game</Button>
+        <Button type='accent' size='small' onClick={save}>{translate('game.save')}</Button>
       </div>
 
       { /* Shop window */}
@@ -67,7 +68,7 @@ export default function GameScene() {
           <h2>{translate('game.heading.upgrades')}</h2>
           <div>
             {
-              ((array) => array.length == 0 ? <span>{translate("game.ubgrade.noupgrades")}</span> : array)
+              ((array) => array.length == 0 ? <span>{translate("game.upgrade.noupgrades")}</span> : array)
                 (
                   availableUpgrades().map(([name, upgrade]: any[]) =>
                     <div className='upgrade' onClick={unlockUpgradeFor(name)}>

@@ -1,4 +1,4 @@
-import languages, { translate, useLanguage } from "../localisation";
+import languages, { languageProgress, translate, useLanguage } from "../localisation";
 import Button from "../components/UI/button";
 import '../styles/mainMenu.scss'
 import { useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ export default function MainMenu() {
   let navigate = useNavigate()
   return (
     <>
-      <Select className="locale-select" value={reactLanguage} onChange={onSelectLanguage} options={Object.entries(languages).map(([name, _]) => ({value: name, content: (reactLanguage != name ? `${translate(`language.${name}`, name)} - ` : '') + translate(`language.${name}`)}))}/>
+      <Select className="locale-select" value={reactLanguage} onChange={onSelectLanguage} options={Object.entries(languages).map(([name, _]) => ({ value: name, content: (reactLanguage != name ? `${translate(`language.${name}`, name)} - ` : '') + translate(`language.${name}`) + (languageProgress(name)[0] != 1 && name != "unlocalised" && name != "english" ? ` (${(languageProgress(name)[0] * 100).toFixed(0)}%, ${languageProgress(name)[1]} / ${languageProgress(name)[2]})` : '') }))} />
       {/* <select value={reactLanguage} className="locale-select" onChange={onSelectLanguage}>
         {Object.entries(languages).map(([name, _]) => name).map(_language => <option value={_language}>{reactLanguage != _language && `${translate(`language.${_language}`, _language)} - `}{translate(`language.${_language}`)}</option>)}
       </select> */}

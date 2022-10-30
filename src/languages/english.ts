@@ -7,11 +7,12 @@ const english: Language = {
     "We also use your broswer local storage to save progress.",
   "language.english": "🇺🇸 English",
   "language.russian": "Russian",
+  "language.ukrainian": "Ukrainian (preliminary)",
   "language.unlocalised": "Unlocalised (debug)",
   "game.name": "PumpkinClicker",
   "game.author": "by",
   "article.and": "and",
-  "game.withloveforjam": "with ❤️ for NGD Halloween JAM 2022 🎃",
+  "game.withloveforjam": "made with ❤️ for NGD Halloween JAM 2022 🎃",
   "game.mainmenu.button.play": "▶️ Play",
   "game.heading.upgrades": "Upgrades",
   "game.heading.buildings": "Buildings",
@@ -27,7 +28,7 @@ const english: Language = {
       )
     ))(),
   "game.upgrade.jack-o-lantern": "Jack-o-Lantern",
-  "game.ubgrade.noupgrades": "Couldn't upgrade anything.",
+  "game.upgrade.noupgrades": "Couldn't upgrade anything.",
   "game.building.factory": "Pumpkin Factory",
   "game.building.bank": "Pumpkin Bank",
   "game.building.farmer": "Pumpkin Farmer",
@@ -36,6 +37,8 @@ const english: Language = {
   "game.building.nobuildings": "There's no buildings to buy.",
   "game.stat.cursor-speed": "Cursor Speed",
   "game.stat.passive-income": "Passive Invome (per sec)",
+  "game.save": "Save game",
+  "small-screen": "Your screen is less than 612 pixels.",
 };
 
 export default english;

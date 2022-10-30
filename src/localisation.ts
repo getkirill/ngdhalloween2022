@@ -3,6 +3,7 @@ import english from "./languages/english";
 import russian from "./languages/russian";
 import unlocalised from "./languages/unlocalised";
 import { setCookie, getCookieValue } from "cookies-utils";
+import ukrainian from "./languages/ukrainian";
 
 export type Language = { [key: string]: string };
 
@@ -10,6 +11,7 @@ const languages: { [key: string]: Language } = {
   unlocalised,
   english,
   russian,
+  ukrainian
 };
 
 export let language = "english";
@@ -49,3 +51,17 @@ export function translate(
   );
 }
 export default languages;
+
+export function languageCheck() {
+  const base = languages.english;
+  for (const [name, lang] of Object.entries(languages).filter(
+    ([name]) => name != "english" && name != "unlocalised"
+  )) {
+    console.log(["english", name]);
+    console.log(Object.keys(base).filter((x) => !Object.keys(lang).includes(x)));
+  }
+}
+
+export function languageProgress(lang: string) {
+  return [Object.keys(languages.english).filter((x) => Object.keys(languages[lang]).includes(x)).length / Object.keys(languages.english).length, Object.keys(languages.english).filter((x) => Object.keys(languages[lang]).includes(x)).length, Object.keys(languages.english).length]
+}

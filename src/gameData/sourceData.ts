@@ -113,11 +113,11 @@ export const buildings: { [key: string]: Building } = {
 		],
 	},
 	farm: {
-		cost: 10,
+		cost: 100,
 		modifiers: [
 			{
 				stat: "passive-income",
-				bias: 0.1,
+				bias: 1,
 			},
 			{
 				stat: "meta.upgrade-cost",
@@ -126,11 +126,11 @@ export const buildings: { [key: string]: Building } = {
 		],
 	},
 	factory: {
-		cost: 10,
+		cost: 1000,
 		modifiers: [
 			{
 				stat: "passive-income",
-				bias: 0.1,
+				bias: 10,
 			},
 			{
 				stat: "meta.upgrade-cost",
@@ -139,11 +139,11 @@ export const buildings: { [key: string]: Building } = {
 		],
 	},
 	bank: {
-		cost: 10,
+		cost: 100000,
 		modifiers: [
 			{
 				stat: "passive-income",
-				bias: 0.1,
+				bias: 100,
 			},
 			{
 				stat: "meta.upgrade-cost",
@@ -152,11 +152,24 @@ export const buildings: { [key: string]: Building } = {
 		],
 	},
 	"space-exploration": {
-		cost: 10,
+		cost: 100000000,
 		modifiers: [
 			{
 				stat: "passive-income",
-				bias: 0.1,
+				bias: 1000,
+			},
+			{
+				stat: "meta.upgrade-cost",
+				multiplier: 1.5,
+			},
+		],
+	},
+	"multiverse": {
+		cost: 10000000000000,
+		modifiers: [
+			{
+				stat: "passive-income",
+				bias: 10000,
 			},
 			{
 				stat: "meta.upgrade-cost",

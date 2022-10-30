@@ -34,6 +34,9 @@ div.selectBox {
       border: 2px solid var(--select-focus);
       border-radius: inherit;
     }
+    & option {
+      background-color: var(--background-secondary-color);
+    }
   }
 
   &::after {
