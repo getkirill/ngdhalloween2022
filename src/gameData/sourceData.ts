@@ -18,7 +18,7 @@ export const upgrades: { [key: string]: Upgrade } = {
 		modifiers: [
 			{
 				stat: "cursor-speed",
-				multiplier: +0.1,
+				multiplier: +1,
 			},
 		],
 		cost: 10,
@@ -27,7 +27,7 @@ export const upgrades: { [key: string]: Upgrade } = {
 		modifiers: [
 			{
 				stat: "cursor-speed",
-				multiplier: +0.1,
+				multiplier: +2,
 			},
 		],
 		dependsOn: ["spook-season-1"],
@@ -37,31 +37,31 @@ export const upgrades: { [key: string]: Upgrade } = {
 		modifiers: [
 			{
 				stat: "cursor-speed",
-				multiplier: +0.1,
+				multiplier: +4,
 			},
 		],
 		dependsOn: ["spook-season-2"],
-		cost: 30,
+		cost: 50,
 	},
 	"spook-season-4": {
 		modifiers: [
 			{
 				stat: "cursor-speed",
-				multiplier: +0.1,
+				multiplier: +8,
 			},
 		],
 		dependsOn: ["spook-season-3"],
-		cost: 50,
+		cost: 150,
 	},
 	"spook-season-5": {
 		modifiers: [
 			{
 				stat: "cursor-speed",
-				multiplier: +0.1,
+				multiplier: +10,
 			},
 		],
 		dependsOn: ["spook-season-4"],
-		cost: 80,
+		cost: 500,
 	},
 	//#endregion
 	"jack-o-lantern": {
@@ -69,33 +69,15 @@ export const upgrades: { [key: string]: Upgrade } = {
 		modifiers: [
 			{
 				stat: "cursor-speed",
-				bias: +0.1,
+				bias: +0.4,
 			},
 			{
 				stat: "meta.upgrade-cost",
-				multiplier: 2,
+				multiplier: 4,
 			},
 		],
 		cost: 30,
-	},
-	/* ...(() => {
-	  return Object.fromEntries(
-		new Map(
-		  new Array(50).fill(true).map((_, i) => [
-			`free-${i + 1}`,
-			{
-			  modifiers: [
-				{
-				  stat: "cursor-speed",
-				  multiplier: +0.1,
-				},
-			  ],
-			  cost: 0,
-			},
-		  ])
-		)
-	  );
-	})(), */
+	}
 };
 
 export const buildings: { [key: string]: Building } = {
@@ -104,11 +86,11 @@ export const buildings: { [key: string]: Building } = {
 		modifiers: [
 			{
 				stat: "passive-income",
-				bias: 0.1,
+				multiplier: 0.1,
 			},
 			{
 				stat: "meta.upgrade-cost",
-				multiplier: 1.5,
+				multiplier: 3,
 			},
 		],
 	},
@@ -139,11 +121,11 @@ export const buildings: { [key: string]: Building } = {
 		],
 	},
 	bank: {
-		cost: 100000,
+		cost: 50_000,
 		modifiers: [
 			{
 				stat: "passive-income",
-				bias: 100,
+				bias: 70,
 			},
 			{
 				stat: "meta.upgrade-cost",
@@ -152,11 +134,11 @@ export const buildings: { [key: string]: Building } = {
 		],
 	},
 	"space-exploration": {
-		cost: 100000000,
+		cost: 500_000,
 		modifiers: [
 			{
 				stat: "passive-income",
-				bias: 1000,
+				bias: 500,
 			},
 			{
 				stat: "meta.upgrade-cost",
@@ -165,11 +147,11 @@ export const buildings: { [key: string]: Building } = {
 		],
 	},
 	"multiverse": {
-		cost: 10000000000000,
+		cost: 10_000_000_000_000,
 		modifiers: [
 			{
 				stat: "passive-income",
-				bias: 10000,
+				bias: 10_000,
 			},
 			{
 				stat: "meta.upgrade-cost",
