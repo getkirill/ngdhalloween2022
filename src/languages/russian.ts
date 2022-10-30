@@ -19,11 +19,11 @@ const russian: Language = {
       new Map(
         [1, 2, 3, 4, 5].map((x) => [
           `game.upgrade.spook-season-${x}`,
-          `Месяц Хеллуина ${x}`,
+          `Месяц Хеллуина: ${x}`,
         ])
       )
     ))(),
-  "game.upgrade.jack-o-lantern": "Светящийся Джек",
+  "game.upgrade.jack-o-lantern": "Светильник Джека",
   "game.building.factory": "Фабрика тыкв",
   "game.stat.cursor-speed": "Скорость курсора",
   "game.stat.passive-income": "Пассивный доход (сек.)",
