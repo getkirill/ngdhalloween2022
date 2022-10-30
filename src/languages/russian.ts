@@ -3,7 +3,7 @@ import { Language } from "../localisation";
 const russian: Language = {
   "language.english": "Английский",
   "language.russian": "🇷🇺 Русский",
-  "language.ukrainian": "Украинский (предварительный)",
+  "language.ukrainian": "Украинский",
   "language.unlocalised": "Без локализации (дебаг)",
   "game.name": "ТыквоКликер", // no need for that i guess
   "game.author": "Авторы:",
@@ -36,6 +36,7 @@ const russian: Language = {
   "game.building.farmer": "Фермер тыкв",
   "game.building.farm": "Ферма тыкв",
   "game.building.space-exploration": "Центр исследования космоса за тыквами",
+  "game.building.multiverse": "Тыквенная мултивселенная",
   "game.building.nobuildings": "Нет доступных построек.",
   "game.save": "Сохранить игру",
   "small-screen": "Ваш экран менее 612 пикселей.",

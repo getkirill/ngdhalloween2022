@@ -7,7 +7,7 @@ const english: Language = {
     "We also use your broswer local storage to save progress.",
   "language.english": "🇺🇸 English",
   "language.russian": "Russian",
-  "language.ukrainian": "Ukrainian (preliminary)",
+  "language.ukrainian": "Ukranian",
   "language.unlocalised": "Unlocalised (debug)",
   "game.name": "PumpkinClicker",
   "game.author": "by",
